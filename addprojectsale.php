@@ -185,7 +185,7 @@ if($b==true && isset($_POST['submit']))
                 <a class="nav-link" href="PackersAndMovers.php">Packers&Movers  </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="logout.php"><?php echo $_SESSION['username']."";?><i class="fa fa-user-circle-o"></i>Logout</a>
+                <a class="nav-link" href="logout.php"><?php echo $_SESSION['username']."";?><i class="fa fa-sign-out"></i>Logout</a>
               </li>
             </ul>
           </div>
@@ -222,7 +222,7 @@ if($b==true && isset($_POST['submit']))
                       							?>
 
                                     <li style="list-style:none ;" class="nav-item">
-                                      <a class="nav-link"style="font-size:2rem; font-weight:bold;" href="http://localhost/Real-Estate-1/upcomingrojects.php"> Projects</a>
+                                      <a class="nav-link"style="font-size:2rem; font-weight:bold;" href="http://localhost/Real-Estate-1/upcomingprojects.php"> Projects</a>
                                     </li>
                                 </div>
                                 <div class="col-md-9 register-right">

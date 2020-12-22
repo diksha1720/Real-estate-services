@@ -49,7 +49,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto ">
-              <?php session_start();
+              <!-- <?php session_start();
 							if($_SESSION['type']=='builder')
 												{
 														echo "<li><a class='nav-link' href='builderHome.php'>Home</a></li>";
@@ -58,7 +58,7 @@
 												{
 														echo "<li><a class='nav-link' href='normalHomeSale.php'>Home</a></li>";
 												}
-												?>
+												?> -->
 
 							<li class="nav-item">
                 <a class="nav-link" href="addup.php">Add Upcoming Projects  </a>
@@ -70,7 +70,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="logout.php"><?php  echo $_SESSION['username']."  ";?><i class="fa fa-user-circle-o"></i>Logout</a>
+                <a class="nav-link" href="logout.php"><?php  echo $_SESSION['username']."  ";?><i class="fa fa-sign-out"></i>Logout</a>
               </li>
             </ul>
           </div>
@@ -119,7 +119,7 @@
 	?>
 
 	<!-- Filter form section -->
-	<div class="filter-search">
+	<!-- <div class="filter-search">
 		<div class="container">
 			<form class="filter-form" method="post" action="builderHome.php">
 			<h2>Search by Location</h2>
@@ -145,11 +145,11 @@
 				<button class="site-btn fs-submit" type="submit">SEARCH</button>
 			</form>
 		</div>
-	</div>
+	</div> -->
 	<!-- page -->
 	<section class="page-section categories-page">
 		<br><br>
-		<h2 align="center">All Properties</h2>
+		<!-- <h2 align="center">All Properties</h2>
 
 			<br><br>
 				<div class="container">
@@ -159,7 +159,7 @@
 						while($x=mysqli_fetch_array($r, MYSQLI_ASSOC))
 						{
 							?>
-							<div class='col-md-4' style="height:300px;">
+							<div class='col-md-4' style="height:320px; margin:50px; border: 5px groove black">
 								<form action='single-list_sale.php?action=add&id=<?php echo $x['flat_id']; ?>' method="post">
 								<div class='sale-notic'>FOR Sale</div>
 									<div class='propertie-info text-white' style="background-image:url('<?php echo $x['image'] ?>');height:270px">
@@ -175,7 +175,8 @@
 				?>
 			</div>
 		</div>
-				<br><br>
+				<br><br> -->
+				<br /> <br /><br />
 		<h2 align="center">Your Properties</h2>
 
 				<br><br><div class="container">
@@ -186,14 +187,14 @@
 						while($y=mysqli_fetch_array($r1, MYSQLI_ASSOC))
 						{
 							?>
-							<div class='col-md-4' style="height:300px;">
-								<form action='single-list_sale.php?action=add&id=<?php echo $y['flat_id']; ?>' method="post">
+							<div class='col-md-4' style="height:320px; margin:50px; border: 5px groove black">
+								<form action='' method="post">
 								<div class='sale-notic'>FOR Sale</div>
 									<div class='propertie-info text-white' style="background-image:url('<?php echo $y['image'] ?>');height:270px">
 									<div class='info-warp'>
 										<p><i class='fa fa-map-marker'></i><?php echo $y['location'] ?></p>
 									</div>
-									<button class='price' type='submit'><?php echo "Rs. ".$y['totalcost'] ?></button>
+									<button class='price' type=''><?php echo "Rs. ".$y['totalcost'] ?></button>
 									</div>
 									</form>
 							</div>

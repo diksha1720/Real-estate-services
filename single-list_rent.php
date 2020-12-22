@@ -53,7 +53,7 @@
 																echo "<li><a class='nav-link' href='normalHomeSale.php'>Home</a></li>";
 														}
 														?>
-							 <?php
+							 <!-- <?php
 														if($_SESSION['type']=='builder')
 														{
 																echo "<li><a  class='nav-link' href='builderHome.php'>For Sale</a></li>";
@@ -72,17 +72,17 @@
 														{
 																echo "<li><a class='nav-link' href='normalHomeRent.php'>For Rent</a></li>";
 														}
-														?>
+														?> -->
 
 
-								<li><a class="nav-link" href="contact.html">Questions </a></li>
-							</li>
+								<!-- <li><a class="nav-link" href="contact.html">Questions </a></li>
+							</li> -->
 							<li class="nav-item">
 								<a class="nav-link" href="PackersAndMovers.php">Packers And Movers </a>
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link" href="logout.php"><?php  echo $_SESSION['username']."  ";?><i class="fa fa-user-circle-o"></i>Logout</a>
+								<a class="nav-link" href="logout.php"><?php  echo $_SESSION['username']."  ";?><i class="fa fa-sign-out"></i>Logout</a>
 							</li>
 						</ul>
 					</div>

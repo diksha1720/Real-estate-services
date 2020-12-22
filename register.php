@@ -63,8 +63,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $b=false;
   } else {
     $password = test_input($_POST["password"]);
-     if (!preg_match("/^[a-zA-Z0-9]{10,}$/",$password) || $password=='') {
-      $passwordErr = "*Enter minimum 10 characters ";
+     if (!preg_match("/^[a-zA-Z0-9]{7,}$/",$password) || $password=='') {
+      $passwordErr = "*Enter minimum 7 characters ";
       $b=false;
     }
   }
@@ -188,7 +188,7 @@ if($b==true && isset($_POST['submit']))
                         <h6>You are 30 seconds away from owning your own house!</h6>
                         <br /><br /><br />
                         <li style="list-style:none;" class="nav-item">
-                            <a class="nav-link"  style="font-size:2rem; font-weight:bold;" href="http://localhost/Real-Estate-1/reg_builder.php">Seller</a>
+                            <a class="nav-link"  style="font-size:2rem; font-weight:bold;" href="http://localhost/Real-Estate-1/reg_builder.php">Builder?</a>
                             </li>
                         <li style="list-style:none ;" class="nav-item">
           	              <a class="nav-link"style="font-size:2rem; font-weight:bold;" href="http://localhost/Real-Estate-1/loginuser.php">Login</a>
@@ -223,7 +223,7 @@ if($b==true && isset($_POST['submit']))
                                             <input type="password" class="form-control" name="confirm" placeholder="Confirm Password *" value="" />
                                             <span class="error"><?php echo $cpasswordErr; ?></span>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <div class="maxl">
                                                 <label class="radio inline">
                                                     <input type="radio" name="gender" value="male" checked>
@@ -238,7 +238,7 @@ if($b==true && isset($_POST['submit']))
                                                     <span>Others</span>
                                                 </label>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -250,17 +250,18 @@ if($b==true && isset($_POST['submit']))
                                             <span class="error"><?php echo $phoneErr; ?></span>
 
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <select class="form-control">
                                                 <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
                                                 <option>What is your Birthdate?</option>
                                                 <option>What is Your old Phone Number</option>
                                                 <option>What is your Pet Name?</option>
                                             </select>
-                                        </div>
-                                        <div class="form-group">
+                                        </div> -->
+                                        <!-- <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
-                                        </div>
+                                        </div> -->
+                                        <br /><br /><br /><br />
                                         <input type="submit" class="btnRegister" name="submit" value="Register"/>
                                     </div>
 

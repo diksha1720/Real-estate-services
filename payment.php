@@ -46,10 +46,10 @@
             <ul class="navbar-nav ml-auto ">
 
 							<li class="nav-item">
-                <a class="nav-link" href="PackersAndMovers.php">Packers&Movers  </a>
+                <a class="nav-link" href="PackersAndMoversuser.php">Packers&Movers  </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="logout.php"><?php session_start();  echo $_SESSION['username']."  ";?><i class="fa fa-sign-in"></i>Logout</a>
+                <a class="nav-link" href="logout.php"><?php session_start();  echo $_SESSION['username']."  ";?><i class="fa fa-sign-out"></i>Logout</a>
               </li>
             </ul>
           </div>
@@ -84,13 +84,14 @@
 
 															<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 																	<h3 class="register-heading">Payment details</h3>
-																	<form method="post" action="insertPandM.php">
+																	<form method="post" action="pay.php">
 																	<div class="row register-form">
 
 																			<div class="col-md-12 ">
 																				<div class="form-group">
 
-																						<h5>Amount:<?php echo $_SESSION["amt"]?></h5>
+																						<h5>Amount:</h5>
+																						<input type="text" class="form-control" name="Amount" placeholder=" " value="<?php echo $_SESSION["amt"]?>" />
 																				</div>
 																					<div class="form-group">
 																							<input type="text" class="form-control" name="Bankname" placeholder="Name of the Bank *" value="" />

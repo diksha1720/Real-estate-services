@@ -50,8 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $b=false;
   } else {
     $password = test_input($_POST["password"]);
-     if (!preg_match("/^[a-zA-Z0-9]{10,}$/",$password) || $password=='') {
-      $passwordErr = "*Enter minimum 10 characters ";
+     if (!preg_match("/^[a-zA-Z0-9]{7,}$/",$password) || $password=='') {
+      $passwordErr = "*Enter minimum 7 characters ";
       $b=false;
     }
   }
@@ -220,7 +220,7 @@ if($b==true && isset($_POST['submit']))
                                                 <span class="error"><?php echo $phoneErr; ?></span>
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Name of org. *" name="name"  value="" />
+                                                <input type="text"  class="form-control" placeholder="Name of org. *" name="name"  value="" />
                                                 <span class="error"><?php echo $nameErr; ?></span>
                                             </div>
 
@@ -228,24 +228,16 @@ if($b==true && isset($_POST['submit']))
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input type="password" class="form-control" placeholder="Password *" name="password" value="" />
+                                                <input type="password" minlength:="10" class="form-control" placeholder="Password *" name="password" value="" />
                                                 <span class="error"><?php echo $passwordErr; ?></span>
                                             </div>
                                             <div class="form-group">
                                                 <input type="password" class="form-control" placeholder="Confirm Password *" name="confirm" value="" />
                                                 <span class="error"><?php echo $cpasswordErr; ?></span>
                                             </div>
-                                            <div class="form-group">
-                                                <select class="form-control">
-                                                    <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
-                                                    <option>What is your Birthdate?</option>
-                                                    <option>What is Your old Phone Number</option>
-                                                    <option>What is your Pet Name?</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="`Answer *" value="" />
-                                            </div>
+                                            <!--
+                                           -->
+                                           <br /><br /><br />
                                             <input type="submit" class="btnRegister" name="submit" value="Register"/>
                                         </div>
                                     </div>

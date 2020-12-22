@@ -3,7 +3,7 @@
 <head>
 	<title>HomePros</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="HomePros">
+	<meta name="description" content="LERAMIZ Landing Page Template">
 	<meta name="keywords" content="LERAMIZ, unica, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
@@ -13,7 +13,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"/> -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="css/animate.css"/>
 	<link rel="stylesheet" href="css/owl.carousel.css"/>
@@ -26,15 +26,12 @@
 	<link rel="stylesheet" type="text/css" href="">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-
-	<!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
 </head>
 <body>
-
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
 
 	<!-- Header section -->
 	<header class="header-section">
@@ -47,19 +44,41 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto ">
-							<li class="nav-item">
-                <a class="nav-link" href="normalHomeSale.php">ForSale  </a>
-							<!-- <li class="nav-item">
-                <li><a class="nav-link" href="normalHomeRent.php">ForRent  </a></li>
-              </li> -->
-							<li class="nav-item">
-                <a class="nav-link" href="upcomingprojects.php">UpcomingProjects  </a>
-              </li>
+							<?php session_start();
+                            if($_SESSION['type']=='builder')
+                            {
+                                echo "<li class='nav-item'><a class='nav-link' href='builderHome.php'>Home</a></li>";
+                            }
+                            else
+                            {
+                                echo "<li class='nav-item'><a class='nav-link' href='normalHomeSale.php'>Home</a></li>";
+                            }
+                            ?>
+                            <!-- <?php
+                            if($_SESSION['type']=='builder')
+                            {
+                                echo "<li class='nav-item'><a class='nav-link' href='builderHome.php'>ForSale</a></li>";
+                            }
+                            else
+                            {
+                                echo "<li class='nav-item'><a class='nav-link' href='normalHomeSale.php'>ForSale</a></li>";
+                            }
+                            ?>
+
+             				  <?php if($_SESSION['type']=='builder')
+                            {
+                                echo "<li class='nav-item'><a class='nav-link' href='builderHome.php'>ForRent</a></li>";
+                            }
+                            else
+                            {
+                                echo "<li class='nav-item'><a class='nav-link' href='normalHomeSale.php'>ForRent</a></li>";
+                            }
+                            ?>
 							<li class="nav-item">
                 <a class="nav-link" href="PackersAndMovers.php">Packers&Movers  </a>
-              </li>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link" href="logout.php"><?php session_start(); echo $_SESSION['username']."  ";?><i class="fa fa-sign-out"></i>Logout</a>
+                <a class="nav-link" href="logout.php"><?php  echo $_SESSION['username']."  ";?><i class="fa fa-sign-out"></i>Logout</a>
               </li>
             </ul>
           </div>
@@ -70,128 +89,67 @@
 	<!-- Header section end -->
 
 
-	<!-- Hero section -->
-	<section class="hero-section set-bg" data-setbg="img/bg.jpg">
+	<!-- Page top section -->
+	<section class="page-top-section set-bg"  data-setbg="img/b23.jpg">
 		<div class="container hero-text text-white">
-			<h2>List your building on our website for rent</h2>
-			<a href="addprojectrent.php" class="site-btn">Add Now</a>
+			<h2>Packers And Movers at your service</h2>
 		</div>
 	</section>
+	<!--  Page top end -->
+	<!-- page -->
 
-	<!-- Hero section end -->
-	<?php
-	include('indexDB.php');
-	$loc=$c='';
-	$x1="select distinct location from flat";
-	$x2="select distinct city from flat";
-	$q="select * from cardrent order by time desc";
-	if(isset($_POST['loc']) && isset($_POST['city']))
-	{
-		$loc=$_POST['loc'];
-		$c=$_POST['city'];
-		if($loc=='All' && $c=='All')
-		{
-			$q="select * from cardrent order by time desc";
-		}
-		if($loc=='All' && $c!='All')
-		{
-			$q="select * from cardrent where city='$c' order by time desc";
-		}
-		if($loc!='All')
-		{
-			$x2="select city from flat where location='$loc'";
-			$q="select * from cardrent where location='$loc' order by time desc";
-		}
-	}
-	$r1=$conn->query($x1);
-	$r2=$conn->query($x2);
-	?>
 
-	<!-- Filter form section -->
-	<div class="filter-search">
+						<section class="page-section categories-page"  >
+							<div class="container" >
+								<br /><br /><br />
+					            <table class="table table-hovertable table-striped table-light table-bordered">
+					                <thead class="thead-dark">
+					                    <tr>
+					                        <th>Name of Organization</th>
+					                        <th>Contact Number</th>
+					                        <th>Email ID</th>
+					                    </tr>
+					                </thead>
+					                <tbody>
+					                    <?php
+					                        include('indexDB.php');
+					                        $q="select * from packers_movers";
+					                        $result = $conn->query($q);
+					                        while($x=mysqli_fetch_array($result, MYSQLI_ASSOC))
+					                        {
+					                            echo "<tr>";
+					                                echo "<td>".$x['name_org']."</td>";
+					                                echo "<td>".$x['contact_no']."</td>";
+													echo "<td>".$x['email_id']."</td>";
+					                            echo "</tr>";
+					                        }
+										?>
+					                </tbody>
+					            </table>
+							</div>
+						</section>
+	<!-- Clients section -->
+	<div class="clients-section">
 		<div class="container">
-			<form class="filter-form" method="post" action="normalHomeRent.php">
-			<h2>Search by Location</h2>
-				<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Location  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;City</h4>
-				<select name="loc">
-					<option value="All" selected>All</option>
-					<?php
-					while($p1=mysqli_fetch_array($r1, MYSQLI_ASSOC))
-					{
-						echo "<option value='".$p1['location']."'>".$p1['location']."</option>";
-					}
-					?>
-				</select>
-				<select name="city">
-					<option value="All" selected>All</option>
-					<?php
-					while($p2=mysqli_fetch_array($r2, MYSQLI_ASSOC))
-					{
-						echo "<option value='".$p2['city']."'>".$p2['city']."</option>";
-					}
-					?>
-				</select>
-				<button class="site-btn fs-submit" type="submit">SEARCH</button>
-			</form>
+			<div class="clients-slider owl-carousel">
+				<a href="#">
+					<img src="img/partner/1.png" alt="">
+				</a>
+				<a href="#">
+					<img src="img/partner/2.png" alt="">
+				</a>
+				<a href="#">
+					<img src="img/partner/3.png" alt="">
+				</a>
+				<a href="#">
+					<img src="img/partner/4.png" alt="">
+				</a>
+				<a href="#">
+					<img src="img/partner/5.png" alt="">
+				</a>
+			</div>
 		</div>
 	</div>
-	<!-- page -->
-	<section class="page-section categories-page">
-		<br><br>
-		<h2 align="center">All Properties</h2>
-		<br><br>
-		<div class="container">
-			<div class="row">
-				<?php
-						$r = $conn->query($q);
-						while($x=mysqli_fetch_array($r, MYSQLI_ASSOC))
-						{
-							?>
-							<div class='col-md-3' style="height:320px; margin:50px; border: 5px groove black">
-								<form action='single-list_rent.php?action=add&id=<?php echo $x['flat_id']; ?>' method="post">
-								<div class='rent-notic'>FOR Rent</div>
-									<div class='propertie-info text-white' style="background-image:url('<?php echo $x['image'] ?>');height:270px">
-									<div class='info-warp'>
-										<p><i class='fa fa-map-marker'></i><?php echo $x['location'] ?></p>
-									</div>
-									<button class='price' type='submit'><?php echo "Rs. ".$x['rent_amount']."/month" ?></button>
-									</div>
-									</form>
-							</div>
-				<?php
-						}
-				?>
-			</div>
-		</div>
-		<br><br>
-		<h2 align="center">Your Properties</h2>
-		<br><br>
-		<div class="container">
-		<div class="row">
-				<?php
-						$ab="select * from flat natural join rent where uid=".$_SESSION['id']."";
-						$r1 = $conn->query($ab);
-						while($y=mysqli_fetch_array($r1, MYSQLI_ASSOC))
-						{
-							?>
-							<div class='col-md-6' style="height:320px; margin:50px; border: 5px groove black">
-								<form action='single-list_rent.php?action=add&id=<?php echo $y['flat_id']; ?>' method="post">
-								<div class='rent-notic'>FOR Rent</div>
-									<div class='propertie-info text-white' style="background-image:url('<?php echo $y['image'] ?>');height:270px">
-									<div class='info-warp'>
-										<p><i class='fa fa-map-marker'></i><?php echo $y['location'] ?></p>
-									</div>
-									<button class='price' type='submit'><?php echo "Rs. ".$y['rent_amount']."/month" ?></button>
-									</div>
-									</form>
-							</div>
-				<?php
-						}
-				?>
-			</div>
-		</div>
-	</section>
-
 	<footer class="footer-section set-bg" data-setbg="img/footer-bg.jpg">
 		<div class="container-fluid">
 			<div class="row">
@@ -251,7 +209,10 @@
 
 		</div>
 	</footer>
+
+
 	<!-- Footer section end -->
+
 	<!--====== Javascripts & Jquery ======-->
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

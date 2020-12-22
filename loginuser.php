@@ -8,6 +8,7 @@
         return $data;
       }
     $username='';$password='';$b=true;
+    $passwordErr="";
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         if(isset($_POST['username']))
@@ -37,7 +38,7 @@
             $tablename='login_builder';
         }
         $q="select $id,password from $tablename where username='$username'";
-        echo $q;
+        // echo $q;
         $result=$conn->query($q);
         if($result==true)
         {
@@ -45,7 +46,8 @@
         }
         else
         {
-					header('Location: loginuser.php');
+            $passwordErr = "*Invalid credentials ";
+					// header('Location: loginuser.php');
         }
         if($row['password']==$password)
         {
@@ -64,8 +66,9 @@
         }
         else
         {
-            echo "Invalid Password!!!!";
-            header('Location: loginuser.php');
+          $passwordErr = "*Invalid credentials ";
+            // echo "Invalid Password!!!!";
+            // header('Location: loginuser.php');
         }
     }
 ?>
@@ -103,7 +106,7 @@
 	<!-- Page Preloder -->
   <header class="header-section">
     <div class="header-top">
-      <div class="container">
+      <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark">
           <a class="navbar-brand"style="font-size:2.5rem; font-weight:bold;" href="">HomePros</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -140,13 +143,13 @@
 <form class="text-center border border-light p-5" action="loginuser.php" method="post">
     <p class="h4 mb-12">Sign in</p>
     <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Username">
-    <span class="error"></span>
+    <span class="error"><?php echo $passwordErr; ?></span>
     <input type="password" id="defaultLoginFormPassword" name="password" class="form-control mb-4" placeholder="Password">
-    <span class="error"></span>
+    <span class="error"><?php echo $passwordErr; ?></span>
     <label for="options"></label>
     <select name="type" >
       <option value="builder">
-        Salesperson
+        Builder
       </option>
       <option value="normal">
         Customer

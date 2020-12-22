@@ -56,10 +56,10 @@
                 <a class="nav-link" href="upcomingprojects.php">UpcomingProjects  </a>
               </li>
 							<li class="nav-item">
-                <a class="nav-link" href="PackersAndMovers.php">Packers&Movers  </a>
+                <a class="nav-link" href="PackersAndMoversuser.php">Packers&Movers  </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="logout.php"><?php session_start(); echo $_SESSION['username'];?><i class="fa fa-user-circle-o"></i>Logout</a>
+                <a class="nav-link" href="logout.php"><?php session_start(); echo $_SESSION['username'];?><i class="fa fa-sign-out"></i>Logout</a>
               </li>
             </ul>
           </div>
@@ -151,7 +151,7 @@
 						while($x=mysqli_fetch_array($r, MYSQLI_ASSOC))
 						{
 							?>
-							<div class='col-md-4' style="height:300px;">
+							<div class='col-md-3' style="height:320px;  margin:30px; border: 5px groove black">
 								<form action='single-list_sale.php?action=add&id=<?php echo $x['flat_id']; ?>' method="post">
 								<div class='sale-notic'>FOR Sale</div>
 									<div class='propertie-info text-white' style="background-image:url('<?php echo $x['image'] ?>');height:270px">
@@ -160,8 +160,10 @@
 									</div>
 									<button class='price' type='submit'><?php echo "Rs. ".$x['totalcost'] ?></button>
 									</div>
+									<br /><br />
 									</form>
 							</div>
+							<br /><br />
 				<?php
 						}
 				?>
@@ -178,15 +180,15 @@
 						while($y=mysqli_fetch_array($r1, MYSQLI_ASSOC))
 						{
 							?>
-							<div class='col-md-4' style="height:300px;">
-								<form action='single-list_sale.php?action=add&id=<?php echo $y['flat_id']; ?>' method="post">
+							<div class='col-md-3' style="height:320px; margin:50px; border: 5px groove black">
+								<form action='' method="post">
 								<div class='sale-notic'>FOR Sale</div>
-
+									<br />
 									<div class='propertie-info text-white' style="background-image:url('<?php echo $y['image'] ?>');height:270px">
 									<div class='info-warp'>
 										<p><i class='fa fa-map-marker'></i><?php echo $y['location'] ?></p>
 									</div>
-									<button class='price' type='submit'><?php echo "Rs. ".$y['totalcost'] ?></button>
+								<button class='price ' type='submit'><?php echo "Rs. ".$y['totalcost'] ?></button>
 									</div>
 
 									</form>

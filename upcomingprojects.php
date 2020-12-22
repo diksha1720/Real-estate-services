@@ -59,7 +59,7 @@
                                 echo "<li class='nav-item'><a class='nav-link' href='normalHomeSale.php'>Home</a></li>";
                             }
                             ?>
-                            <?php
+                            <!-- <?php
                             if($_SESSION['type']=='builder')
                             {
                                 echo "<li class='nav-item'><a class='nav-link' href='builderHome.php'>ForSale</a></li>";
@@ -78,12 +78,12 @@
                             {
                                 echo "<li class='nav-item'><a class='nav-link' href='normalHomeSale.php'>ForRent</a></li>";
                             }
-                            ?>
+                            ?> -->
 							<li class="nav-item">
                 <a class="nav-link" href="PackersAndMovers.php">Packers&Movers  </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="logout.php"><?php  echo $_SESSION['username']."  ";?>Logout</a>
+                <a class="nav-link" href="logout.php"><?php  echo $_SESSION['username']."  ";?><i class="fa fa-sign-out"></i>Logout</a>
               </li>
             </ul>
           </div>

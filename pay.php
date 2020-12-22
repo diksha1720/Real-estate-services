@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 include('indexDB.php');
 if(isset($_POST['username']))
 {
@@ -30,5 +30,14 @@ if(mysqli_query($conn, $sql)){
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
 }
+if($_SESSION['type']=='builder')
+{
+    echo "<li><a  class='nav-link btnContact' href='builderHome.php'>Back to Home</a></li>";
+}
+else
+{
+    echo "<li><a class='nav-link btnContact' href='normalHomeSale.php'>Back to Home</a></li>";
+}
+
 mysqli_close($conn);
 ?>
