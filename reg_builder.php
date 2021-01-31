@@ -199,7 +199,7 @@ if($b==true && isset($_POST['submit']))
 
 
                               <div class="tab-pane fade show active"  role="tabpanel" aria-labelledby="profile-tab">
-                                  <h3  class="register-heading">Register as a Salesperson</h3>
+                                  <h3  class="register-heading">Register as a Builder</h3>
                                   <form  method="post" action="reg_builder.php">
                                     <div class="row register-form">
                                         <div class="col-md-6">
